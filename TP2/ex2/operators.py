@@ -10,8 +10,8 @@ def up(state):
 
     new_board = deepcopy(state.board)
 
+    new_board[x][y] = new_board[x - 1][y]
     new_board[x - 1][y] = 0
-    new_board[x][y] = state.board[x - 1][y]
 
     return State(new_board, (x - 1, y))
 
@@ -24,8 +24,8 @@ def down(state):
 
     new_board = deepcopy(state.board)
 
+    new_board[x][y] = new_board[x + 1][y]
     new_board[x + 1][y] = 0
-    new_board[x][y] = state.board[x + 1][y]
 
     return State(new_board, (x + 1, y))
 
@@ -38,8 +38,8 @@ def left(state):
 
     new_board = deepcopy(state.board)
 
+    new_board[x][y] = new_board[x][y - 1]
     new_board[x][y - 1] = 0
-    new_board[x][y] = state.board[x][y - 1]
 
     return State(new_board, (x, y - 1))
 
@@ -52,8 +52,8 @@ def right(state):
 
     new_board = deepcopy(state.board)
 
+    new_board[x][y] = new_board[x][y + 1]
     new_board[x][y + 1] = 0
-    new_board[x][y] = state.board[x][y + 1]
 
     return State(new_board, (x, y + 1))
 

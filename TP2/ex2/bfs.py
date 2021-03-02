@@ -34,4 +34,6 @@ if __name__ == '__main__':
         currState = stateQueue.pop(0)
         solution.append(currState)
 
-    print(len(solution))
+    solution.reverse()
+    state = solution.pop()
+    print(state.board)

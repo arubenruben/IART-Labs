@@ -7,15 +7,18 @@ class State:
         self._depth = 0
 
     def is_final_state(self):
-        counter = 0
-        if self.board[0][0] != 0:
-            return False
+        expected_value = 1
 
-        for i in range(len(self.board)):
-            for j in range(len(self.board[i])):
-                if self.board[i][j] != counter:
+        for row in self.board:
+            for cell in row:
+                if expected_value == (self.board_size * self.board_size):
+                    expected_value = 0
+
+                if cell != expected_value:
                     return False
-                counter += 1
+
+                expected_value += 1
+
         return True
 
     @property
@@ -39,8 +42,4 @@ class State:
         return self._board_size
 
     def __eq__(self, state):
-        for i in range(len(self.board)):
-            for j in range(len(self.board[i])):
-                if self.board[i][j] is not state.board[i][j]:
-                    return False
-        return True
+        return self.board == state.board
