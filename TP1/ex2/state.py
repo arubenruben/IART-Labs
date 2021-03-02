@@ -44,10 +44,13 @@ class State:
         self._depth = state.depth + 1
 
     def number_cannibals_left(self):
-        return 3 - self.number_cannibals_right
+        return 3 - self._number_cannibals_right
 
     def number_miss_left(self):
-        return 3 - self.number_miss_right
+        if 3 - self._number_miss_right == 0:
+            return 999999999999999999
+
+        return 3 - self._number_miss_right
 
     @property
     def depth(self):
