@@ -5,7 +5,7 @@ from copy import deepcopy
 def up(state):
     x, y = state.empty_place_cords
 
-    if x - 1 < 0:
+    if x == 0:
         return None
 
     new_board = deepcopy(state.board)
@@ -19,7 +19,7 @@ def up(state):
 def down(state):
     x, y = state.empty_place_cords
 
-    if x + 1 >= state.board_size:
+    if x == (state.board_size - 1):
         return None
 
     new_board = deepcopy(state.board)
@@ -33,7 +33,7 @@ def down(state):
 def left(state):
     x, y = state.empty_place_cords
 
-    if y - 1 < 0:
+    if y == 0:
         return None
 
     new_board = deepcopy(state.board)
@@ -47,7 +47,7 @@ def left(state):
 def right(state):
     x, y = state.empty_place_cords
 
-    if y + 1 >= state.board_size:
+    if y == (state.board_size - 1):
         return None
 
     new_board = deepcopy(state.board)

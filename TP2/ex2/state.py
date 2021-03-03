@@ -25,10 +25,6 @@ class State:
     def board(self):
         return self._board
 
-    @board.setter
-    def board(self, value):
-        self._board = value
-
     @property
     def empty_place_cords(self):
         return self._empty_place_cords

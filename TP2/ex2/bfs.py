@@ -4,7 +4,7 @@ from state import State
 
 if __name__ == '__main__':
 
-    startingInfo = create_board(1)
+    startingInfo = create_board(4)
     currState = State(startingInfo[0], startingInfo[1])
 
     stateQueue = [currState]
@@ -34,6 +34,5 @@ if __name__ == '__main__':
         currState = stateQueue.pop(0)
         solution.append(currState)
 
-    solution.reverse()
     state = solution.pop()
     print(state.board)
