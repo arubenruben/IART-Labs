@@ -4,7 +4,7 @@ from state import State
 
 if __name__ == '__main__':
 
-    startingInfo = create_board(4)
+    startingInfo = create_board(1)
     currState = State(startingInfo[0], startingInfo[1])
 
     stateQueue = [currState]

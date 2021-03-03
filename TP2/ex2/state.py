@@ -28,7 +28,7 @@ class State:
     @parent.setter
     def parent(self, state):
         self._parent = state
-        self._depth = state.depth
+        self._depth = state.depth + 1
 
     @property
     def board(self):
@@ -58,18 +58,18 @@ class State:
         return self.depth
 
     def get_h(self):
-        counter = 0
+        sum = 0
 
-        for i in range(self._board_size):
-            for j in range(self._board_size):
-                value = self._board[i][j]
+        for i in range(self.board_size):
+            for j in range(self.board_size):
+                value = self.board[i][j]
 
-                expected_row = (value - 1) / self._board_size
-                expected_col = (value - 1) % self._board_size
+                expected_row = (value - 1) / self.board_size
+                expected_col = (value - 1) % self.board_size
 
-                counter += (abs(expected_row - i) + abs(expected_col - j))
+                sum += (abs(expected_row - i) + abs(expected_col - j))
 
-        return counter
+        return sum
 
 
 def __eq__(self, state):
