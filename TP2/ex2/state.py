@@ -22,6 +22,15 @@ class State:
         return True
 
     @property
+    def parent(self):
+        return self._parent
+
+    @parent.setter
+    def parent(self, state):
+        self._parent = state
+        self._depth = state.depth
+
+    @property
     def board(self):
         return self._board
 
@@ -37,5 +46,43 @@ class State:
     def board_size(self):
         return self._board_size
 
-    def __eq__(self, state):
-        return self.board == state.board
+    @property
+    def depth(self):
+        return self._depth
+
+    @depth.setter
+    def depth(self, value):
+        self._depth = value
+
+    def get_g(self):
+        return self.depth
+
+    def get_h(self):
+        counter = 0
+
+        for i in range(self._board_size):
+            for j in range(self._board_size):
+                value = self._board[i][j]
+
+                expected_row = (value - 1) / self._board_size
+                expected_col = (value - 1) % self._board_size
+
+                counter += (abs(expected_row - i) + abs(expected_col - j))
+
+        return counter
+
+
+def __eq__(self, state):
+    return self.board == state.board
+
+
+def get_a_star_value(state):
+    return state.get_h() + state.get_g()
+
+
+def get_greedy_value(state):
+    return state.get_h()
+
+
+def get_uniform_cost_value(state):
+    return state.get_g()
